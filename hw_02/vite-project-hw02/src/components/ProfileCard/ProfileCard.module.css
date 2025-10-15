@@ -1,0 +1,17 @@
+.card {
+  background-color: antiquewhite;
+  height: 500px;
+  width: 350px;
+  border: 2px solid black;
+}
+
+.imgCard {
+  border-radius: 5px;
+  height: 300px;
+  object-fit: cover;
+  width: 300px;
+}
+
+.title {
+  text-decoration: underline;
+}

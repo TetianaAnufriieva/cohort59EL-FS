@@ -14,8 +14,8 @@ export default function Bike(props: Props): JSX.Element {
     <div>
       Brand: {brand}
       Gears: {gears}
-      Price: {price}
-      <img className={style.image} src={image} alt="" />
+      Price: {price} <br/>
+      Image: <img className={style.image} src={image} alt="" />
     </div>
   );
 }
