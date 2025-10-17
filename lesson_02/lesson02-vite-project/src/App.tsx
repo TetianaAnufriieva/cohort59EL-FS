@@ -8,10 +8,10 @@ import Alcohol from "./components/Alcohol/Alcohol";
 function App(): JSX.Element {
   return (
     <div>
+      <Counter />
       <Alcohol />
       <Sandwich />
       <CarShop />
-      <Counter />
     </div>
   );
 }
