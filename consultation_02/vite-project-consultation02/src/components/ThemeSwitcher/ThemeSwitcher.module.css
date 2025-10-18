@@ -1,0 +1,21 @@
+.btn{
+    width: 400px;
+    height: auto;
+    background-color: blue;
+    border-radius: 50px;
+    border: 2 px solid black;
+    font-size: 42px;
+
+}
+
+.btn:hover {
+  background-color: rgb(64, 64, 235);  
+}
+
+.mainContainer{
+    display: flex;
+    width: 800px;
+    height: 800px;
+    align-items: center;
+    justify-content: center;
+}
