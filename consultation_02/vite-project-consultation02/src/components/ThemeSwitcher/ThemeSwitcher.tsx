@@ -7,7 +7,7 @@ export default function ThemeSwitcher(): JSX.Element {
   function changeTheme(): void {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   }
-  const themeStyle =
+  const themeStyle: React.CSSProperties =
     theme === "light"
       ? { backgroundColor: "white", color: "black" }
       : { backgroundColor: "black", color: "white" };

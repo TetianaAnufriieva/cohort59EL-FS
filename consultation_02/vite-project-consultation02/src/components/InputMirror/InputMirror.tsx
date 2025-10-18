@@ -3,7 +3,7 @@ import { useState, type JSX } from "react";
 export default function InputMirror(): JSX.Element {
   const [text, setText] = useState<string>("");
 
-function handleChange(event):any {
+function handleChange(event):void {
     setText(event.target.value);
   }
   return (
