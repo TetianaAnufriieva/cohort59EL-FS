@@ -1,0 +1,13 @@
+.item {
+  border: 1px solid #f9b9cf;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 15px 0;
+  list-style: none;
+  background-color: #fff0f6;
+  box-shadow: 0 2px 6px rgba(255, 182, 193, 0.3);
+}
+
+.item:hover {
+  box-shadow: 0 6px 12px rgba(255, 182, 193, 0.4);
+}
