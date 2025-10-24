@@ -8,27 +8,15 @@ import CarShop from "./components/CarShop/CarShop";
 import Counter from "./components/Counter/Counter";
 import UsersPage from "./components/UsersPage/UsersPage";
 import UserPage from "./components/UsersPage/UserPage";
-// import CarShop from "./components/CarShop/CarShop";
-// import Counter from "./components/Counter/Counter";
-// import Sandwich from "./components/Sandwich/Sandwich";
-// import Alcohol from "./components/Alcohol/Alcohol";
-// import Playground from "./components/Playground/Playground";
-// import Test1 from "./components/RandomDog/RandomDog";
-// import RandomDog from "./components/RandomDog/RandomDog";
-// import UsersPage from "./components/UsersPage/UsersPage";
+import Playground from "./components/Playground/Playground";
+import { ThemeSwitcher } from "./components/ThemeSwitcher/ThemeSwitcher";
+import Feedback from "./components/Feedback/Feedback";
+import { InputMirror } from "./components/InputMirror/InputMirror";
+import RandomDog from "./components/RandomDog/RandomDog";
+import Sandwich from "./components/Sandwich/Sandwich";
 
 function App(): JSX.Element {
   return (
-    // <div>
-    //   <UsersPage />
-    //   <RandomDog />
-    //   <Playground />
-    //   <Counter />
-    //   <Alcohol />
-    //   <Sandwich />
-    //   <CarShop />
-    // </div>
-
     <Routes>
       <Route path="/" element={<LayOut />}>
         <Route index element={<Home />} />
@@ -38,6 +26,13 @@ function App(): JSX.Element {
         <Route path="home" element={<Home />} />
         <Route path="userspage" element={<UsersPage />} />
         <Route path="/userspage/:userId" element={<UserPage />} />
+
+        <Route path="feedback" element={<Feedback />} />
+        <Route path="inputmirror" element={<InputMirror />} />
+        <Route path="playground" element={<Playground />} />
+        <Route path="randomdog" element={<RandomDog />} />
+        <Route path="sandwich" element={<Sandwich />} />
+        <Route path="themeswitcher" element={<ThemeSwitcher />} />
       </Route>
     </Routes>
   );
