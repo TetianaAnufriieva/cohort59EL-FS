@@ -1,11 +1,12 @@
-import type { JSX } from "react";
+import { useState, type JSX } from "react";
 import style from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
 
 export default function NavBar(): JSX.Element {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className={style.navigation}>
-      <ul className={style.list}>
+     <ul className={`${style.list} ${isOpen ? style.listActive : ""}`}>
         <li className={style.listElement}>
           <NavLink to="alcohol" className={style.link}>
             Alcohol
@@ -62,6 +63,7 @@ export default function NavBar(): JSX.Element {
           </NavLink>
         </li>
       </ul>
+      <div className={style.burgerIcon} onClick={() => setIsOpen(!isOpen)}> ☰ </div>
     </nav>
   );
 }
