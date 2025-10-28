@@ -1,8 +1,10 @@
 import { useState, type JSX } from "react";
 import style from "./Sandwich.module.css";
+import { useTheme } from "../themeContext/useTheme";
 
 export default function Sandwich(): JSX.Element {
   const [sandwich, setSandwich] = useState<string>("Sandwich : ");
+  const {theme, toggleTheme} = useTheme(); // используем хук для темы
 
   function handleAddBread(): void {
     setSandwich(`${sandwich} Bread 🍞`);
@@ -25,7 +27,7 @@ export default function Sandwich(): JSX.Element {
   }
 
   return (
-    <div className={style.container}>
+    <div className={`${style.container} ${theme === "dark" ? style.dark : style.light}`}>
       <h2>Sandwich</h2>
       <img
         src="https://mur-mur.top/uploads/posts/2023-05/1683186165_mur-mur-top-p-mini-burgeri-keitering-krasivo-53.jpg"
@@ -49,6 +51,7 @@ export default function Sandwich(): JSX.Element {
           Reset
         </button>
       </div>
+      <button type="button" className={style.themeToggle} onClick={toggleTheme}>Переключить тему на (текущая: {theme})</button>
     </div>
   );
 }

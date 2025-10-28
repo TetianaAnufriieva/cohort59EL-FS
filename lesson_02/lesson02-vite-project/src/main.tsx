@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "./components/themeContext/ThemeProvider.tsx";
 // import Feedback from "./components/Feedback/Feedback.tsx";
 
 createRoot(document.getElementById("root")!).render(
@@ -10,7 +11,9 @@ createRoot(document.getElementById("root")!).render(
   //   <Feedback />
   //   <App />
   // </StrictMode>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <ThemeProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ThemeProvider>
 );
