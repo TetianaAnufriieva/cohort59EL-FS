@@ -10,7 +10,7 @@ export default function CarShop(): JSX.Element {
       {/* Вызываем */}
       <Car brand={"BMW7"} color={"purple"} image={""} />
       <Car brand={"FordFocus"} color={"red"} image={""} />
-      <Bike gears={21} brand={"Trek"} price={750.30} image={"https://sportishka.com/uploads/posts/2022-04/1650967338_37-sportishka-com-p-chopperi-kharlei-devidson-modelnii-ryad-kr-39.jpg"}/>
+      <Bike gears={21} brand={"Trek"} price={750.30} image={"https://images.bike24.com/media/720/i/mb/da/df/cd/madoneslr7axs-25-46688-d-primary-1727464.jpg"}/>
      
     </div>
   );

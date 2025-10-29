@@ -14,6 +14,9 @@ import Feedback from "./components/Feedback/Feedback";
 import { InputMirror } from "./components/InputMirror/InputMirror";
 import RandomDog from "./components/RandomDog/RandomDog";
 import Sandwich from "./components/Sandwich/Sandwich";
+import UserProduct from "./components/UserProducts/UserProduct";
+import UserProducts from "./components/UserProducts/UserProducts";
+
 
 function App(): JSX.Element {
   return (
@@ -33,6 +36,9 @@ function App(): JSX.Element {
         <Route path="randomdog" element={<RandomDog />} />
         <Route path="sandwich" element={<Sandwich />} />
         <Route path="themeswitcher" element={<ThemeSwitcher />} />
+
+        <Route path="userproducts" element={<UserProducts />} />
+        <Route path="/userproducts/:productId" element={<UserProduct />} />
       </Route>
     </Routes>
   );

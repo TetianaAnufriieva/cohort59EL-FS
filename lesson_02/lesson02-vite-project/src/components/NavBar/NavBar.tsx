@@ -6,7 +6,7 @@ export default function NavBar(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className={style.navigation}>
-     <ul className={`${style.list} ${isOpen ? style.listActive : ""}`}>
+      <ul className={`${style.list} ${isOpen ? style.listActive : ""}`}>
         <li className={style.listElement}>
           <NavLink to="alcohol" className={style.link}>
             Alcohol
@@ -62,8 +62,16 @@ export default function NavBar(): JSX.Element {
             ThemeSwitcher
           </NavLink>
         </li>
+        <li className={style.listElement}>
+          <NavLink to="userproducts" className={style.link}>
+            UsersProduct
+          </NavLink>
+        </li>
       </ul>
-      <div className={style.burgerIcon} onClick={() => setIsOpen(!isOpen)}> ☰ </div>
+      <div className={style.burgerIcon} onClick={() => setIsOpen(!isOpen)}>
+        {" "}
+        ☰{" "}
+      </div>
     </nav>
   );
 }

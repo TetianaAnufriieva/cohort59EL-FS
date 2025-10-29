@@ -42,16 +42,10 @@ export default function UserPage(): JSX.Element {
       <div>
         Имя, Фамилия: {user.name.firstname} {user.name.lastname}
       </div>
-      <div>
-        Телефон: {user.phone} 
-      </div>
-            <div>
-        Эмейл: {user.email} 
-      </div>
-                  <div>
-        ZIP-code: {user.address.zipcode} 
-      </div>
-     <Link to= "../userspage">Вернуться к списку пользователей</Link>
+      <div>Телефон: {user.phone}</div>
+      <div>Эмейл: {user.email}</div>
+      <div>ZIP-code: {user.address.zipcode}</div>
+      <Link to="../userspage">Вернуться к списку пользователей</Link>
     </div>
   );
 }
