@@ -67,6 +67,36 @@ export default function NavBar(): JSX.Element {
             UsersProduct
           </NavLink>
         </li>
+        <li className={style.listElement}>
+          <NavLink to="contactform" className={style.link}>
+            ContactForm
+          </NavLink>
+        </li>
+        <li className={style.listElement}>
+          <NavLink to="securitycheckform" className={style.link}>
+            SecurityCheckForm
+          </NavLink>
+        </li>
+        <li className={style.listElement}>
+          <NavLink to="registration" className={style.link}>
+            Registration
+          </NavLink>
+        </li>
+        <li className={style.listElement}>
+          <NavLink to="users" className={style.link}>
+            Users
+          </NavLink>
+        </li>
+        <li className={style.listElement}>
+          <NavLink to="todoapp" className={style.link}>
+            Todo App
+          </NavLink>
+        </li>
+        <li className={style.listElement}>
+          <NavLink to="onlineCourseRegistration" className={style.link}>
+            Online Course Registration
+          </NavLink>
+        </li>
       </ul>
       <div className={style.burgerIcon} onClick={() => setIsOpen(!isOpen)}>
         {" "}
