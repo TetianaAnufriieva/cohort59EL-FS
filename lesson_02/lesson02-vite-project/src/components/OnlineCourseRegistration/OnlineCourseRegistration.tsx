@@ -86,18 +86,6 @@ export default function OnlineCourseRegistration() {
 
         <Field
           className={styles.inputField}
-          type="email"
-          name="email"
-          placeholder="Email"
-        />
-        <ErrorMessage
-          name="email"
-          component="div"
-          className={styles.errorMessage}
-        />
-
-        <Field
-          className={styles.inputField}
           type="number"
           name="age"
           placeholder="Возраст"
