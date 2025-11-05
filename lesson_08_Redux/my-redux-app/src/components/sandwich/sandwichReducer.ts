@@ -3,7 +3,7 @@ import type SandwichState from "./types/SandwichState";
 
 // начальное значение централизованного состояния
 const initialState: SandwichState = {
-  value: "Add ingredients: ",
+  value: "Sandwich ingredients: ",
 };
 export default function sandwichReducer(
   state: SandwichState = initialState,
@@ -21,7 +21,7 @@ export default function sandwichReducer(
     case "sandwich/reset":
       return {
         ...state,
-        value: (state.value = "Add ingredients: "),
+        value: (state.value = "Sandwich ingredients: "),
       };
     default:
       return state;
