@@ -7,19 +7,19 @@ export default function Sandwich(): JSX.Element {
   const dispatch = useDispatch();
   function handleAddBread(): void {
     // Dispatch мы вызываем когда хотим изменить централизованное состояние
-    dispatch({ type: "sandwich/addBread", payload: "🍞" });
+    dispatch({ type: "sandwich/addIngredient", payload: "🍞" });
   }
   function handleAddCheese(): void {
     // Dispatch мы вызываем когда хотим изменить централизованное состояние
-    dispatch({ type: "sandwich/addCheese", payload: "🧀" });
+    dispatch({ type: "sandwich/addIngredient", payload: "🧀" });
   }
   function handleAddBacon(): void {
     // Dispatch мы вызываем когда хотим изменить централизованное состояние
-    dispatch({ type: "sandwich/addBacon", payload: "🥓" });
+    dispatch({ type: "sandwich/addIngredient", payload: "🥓" });
   }
   function handleAddSalat(): void {
     // Dispatch мы вызываем когда хотим изменить централизованное состояние
-    dispatch({ type: "sandwich/addSalat", payload: "🥬" });
+    dispatch({ type: "sandwich/addIngredient", payload: "🥬" });
   }
 
   function handleReset(): void {
