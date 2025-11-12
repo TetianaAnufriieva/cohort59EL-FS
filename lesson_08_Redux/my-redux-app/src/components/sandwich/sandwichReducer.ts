@@ -5,7 +5,6 @@ import type SandwichState from "./types/SandwichState";
 const initialState: SandwichState = {
   value: "Sandwich ingredients: ",
 };
-
 export default function sandwichReducer(
   state: SandwichState = initialState,
   action: Action
