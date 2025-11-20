@@ -23,7 +23,7 @@ export const Sandwich = () => {
           Add cheese
         </button>
         <button onClick={() => dispatch(addIngredient("🥓"))}>Add bacon</button>
-        <button onClick={() => dispatch(addIngredient("🥬"))}>Add salat</button>
+        <button onClick={() => dispatch(addIngredient("🥬"))}>Add salad</button>
         <button onClick={() => dispatch(clear())}>Clear</button>
       </div>
     </div>
