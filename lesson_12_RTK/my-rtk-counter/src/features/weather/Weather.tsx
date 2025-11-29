@@ -16,14 +16,15 @@ export const Weather = () => {
     error,
   } = useAppSelector((state: RootState) => state.weather);
 
-  const getTemperatureColor = (temp: number): string => {
-    if (temp < -10) return "text-blue-300";
-    if (temp < 0) return "text-blue-400";
-    if (temp < 10) return "text-blue-500";
-    if (temp < 20) return "text-yellow-500";
-    if (temp < 30) return "text-orange-500";
-    return "text-red-500";
-  };
+  // const getTemperatureColor = (temp: number): string => {
+  //   if (temp < -10) return "text-blue-300";
+  //   if (temp < 0) return "text-blue-400";
+  //   if (temp < 10) return "text-blue-500";
+  //   if (temp < 20) return "text-yellow-500";
+  //   if (temp < 30) return "text-orange-500";
+  //   return "text-red-500";
+  // };
+  
 
   const handleSearch = () => {
     if (city.trim() === "") return;
@@ -59,13 +60,16 @@ export const Weather = () => {
             {weather.name}, {weather.sys.country}
           </h2>
 
-          <div
-            className={`${styles.temperature} ${getTemperatureColor(
+          <div className={styles.temperature}>{weather.main.temp}°C</div>
+
+          {/* <div
+            className={`text-4xl font-bold my-2 ${getTemperatureColor(
               weather.main.temp
             )}`}
           >
             {weather.main.temp}°C
-          </div>
+          </div> */}
+
           <div className={styles.feels_like}>
             FEELS LIKE: {weather.main.feels_like}°C
           </div>
