@@ -1,22 +1,34 @@
-import { ClipLoader } from "react-spinners";
+// src/features/users/UsersList.tsx
+import { useEffect } from "react";
+
+
+import {
+  fetchUsers,
+  selectUsers,
+  selectLoading,
+  selectError,
+} from "./usersSlice";
+
 import styles from "./UsersList.module.css";
-import { useGetUsersQuery } from "./usersApi";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 export const UsersList = () => {
-  const { data: users, error, isFetching } = useGetUsersQuery();
+  const dispatch = useAppDispatch();
 
-  if (isFetching)
-    return (
-      <div className={styles.loadingWrapper}>
-        <ClipLoader color="#4facfe" size={50} />
-      </div>
-    );
+  const users = useAppSelector(selectUsers);
+  const loading = useAppSelector(selectLoading);
+  const error = useAppSelector(selectError);
 
-  if (error) return <p className={styles.error}>Loading error</p>;
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  if (loading) return <p className={styles.loading}>Загрузка...</p>;
+  if (error) return <p className={styles.error}>{error}</p>;
 
   return (
     <div className={styles.grid}>
-      {users?.map((user) => (
+      {users.map((user) => (
         <div key={user.id} className={styles.card}>
           <h2 className={styles.name}>
             {user.name.firstname} {user.name.lastname}

@@ -1,31 +1,22 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/counterSlice";
-import sandwichReducer from "../features/sandwich/sandwichSlice";
-import usersReducer from "../features/users/userSlice";
-import productsReducer from "../features/products/productSlice";
+import usersReducer from "../features/users/usersSlice";
+import productsReducer from "../features/products/productsSlice";
 import cartReducer from "../features/cart/cartSlice";
-import authReducer from "../features/auth/authSlice";
-import weatherReducer from "../features/weather/weatherSlice";
 import apodReducer from "../features/apod/apodSlice";
-import { usersApi } from "../features/users/usersApi";
-import { weatherApi } from "../features/weather/weatherApi";
-
+import { weatherApi } from "../features/weather/weatherAPI";
 //→ Импортируем configureStore — простой способ создать store.
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    sandwich: sandwichReducer,
     users: usersReducer,
     products: productsReducer,
     cart: cartReducer,
-    auth: authReducer,
-    weather: weatherReducer,
-    apod: apodReducer,
-    [usersApi.reducerPath]: usersApi.reducer,
     [weatherApi.reducerPath]: weatherApi.reducer,
+    //weatherApi: weatherApi.reducer,
+    apod: apodReducer,
   },
-  middleware: (getDefault) =>
-    getDefault().concat(usersApi.middleware, weatherApi.middleware),
+  middleware: (getDefault) => getDefault().concat(weatherApi.middleware),
   // Настраиваем middleware.
   // Берём стандартные middleware Redux Toolkit и добавляем RTK Query middleware.
   // Оно отвечает за кэширование, рефетчинг
@@ -42,10 +33,12 @@ export const store = configureStore({
 });
 
 // Типы для useSelector и useDispatch
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
 // → Создаём типы для селектора и диспатчера, чтобы использовать в TS-компонентах.
+
+
 
 // Что такое middleware 
 
