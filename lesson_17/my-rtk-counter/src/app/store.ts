@@ -1,50 +1,42 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // localStorage
 
-// Импорты редьюсеров
 import counterReducer from "../features/counter/counterSlice";
-import sandwichReducer from "../features/sandwich/sandwichSlice";
-import productsReducer from "../features/products/productSlice";
+import productsReducer from "../features/products/productsSlice";
 import cartReducer from "../features/cart/cartSlice";
-import authReducer from "../features/auth/authSlice";
 import apodReducer from "../features/apod/apodSlice";
-
-// Импорты RTK Query
-import { usersApi } from "../features/users/usersApi";
 import { weatherApi } from "../features/weather/weatherApi";
-import { dictionaryApi } from "../features/dictionary/dictionaryApi";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import { usersApi } from "../features/users/usersApi";
+import weatherStateReducer from '../features/weather/weatherSlice'
 
-// Объединяем все редьюсеры
+// ---------- Комбинируем все редьюсеры ----------
+
 const rootReducer = combineReducers({
   counter: counterReducer,
-  sandwich: sandwichReducer,
   products: productsReducer,
   cart: cartReducer,
-  auth: authReducer,
   apod: apodReducer,
+  weatherState: weatherStateReducer,
+
   // RTK Query reducers
-  [usersApi.reducerPath]: usersApi.reducer,
   [weatherApi.reducerPath]: weatherApi.reducer,
-  [dictionaryApi.reducerPath]: dictionaryApi.reducer,
+  [usersApi.reducerPath]: usersApi.reducer,
+  
 });
 
-// Настройка persist
+// ---------- Настройки persist ----------
+// Сохраняем ТОЛЬКО кэш (usersApi + weatherApi)
+
 const persistConfig = {
-  key: "root", //имя "корневого" ключа, под которым всё состояние будет храниться в storage
+  key: "root",//имя "корневого" ключа, под которым всё состояние будет храниться в storage
   // в localStorage будет ключ вроде: persist:root
-  storage, // localStorage браузера
-  whitelist: [
-    "counter",
-    usersApi.reducerPath,
-    weatherApi.reducerPath,
-    dictionaryApi.reducerPath,
-  ],
-  // список строк с именами редьюсеров, которые нужно сохранять.
+  storage,//Это означает: используй localStorage браузера.
+  whitelist: [usersApi.reducerPath, weatherApi.reducerPath,"weatherState", "counter"]
+  //список строк с именами редьюсеров, которые нужно сохранять.
   //Важно: только эти части состояния попадут в localStorage. Остальное — нет.
 };
 
-// Создаём persistedReducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 //▶ Оборачиваем твой rootReducer (который собран через combineReducers) в persistReducer.
@@ -61,30 +53,28 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // при старте приложения восстанавливает состояние из localStorage.
 
-// ---------- Создаём store с middleware RTK Query ----------
+// ---------- Создаём store ----------
 
 export const store = configureStore({
-  reducer: persistedReducer, //В reducer мы передаём не rootReducer, а уже обёрнутый persistedReducer.
-  //То есть теперь всем управляeт redux-persist.
+  reducer: persistedReducer,//В reducer мы передаём не rootReducer, а уже обёрнутый persistedReducer.
+//То есть теперь всем управляeт redux-persist.
   middleware: (getDefault) =>
     getDefault({
       serializableCheck: false, // обязательно для redux-persist
       //Это проверка, что в Redux store лежат только сериализуемые значения,
       //  то есть такие, которые можно безопасно сохранить как JSON. те данные которые можно безопасно превратить в строку
-      // ✔️ Сериализуемые:
-      // строки
-      // числа
-      // булевы
-      // массивы
-      // объекты (plain object)
-    }).concat(
-      usersApi.middleware,
-      weatherApi.middleware,
-      dictionaryApi.middleware
-    ),
+// ✔️ Сериализуемые:
+// строки
+// числа
+// булевы
+// массивы
+// объекты (plain object)
+    })
+      .concat(usersApi.middleware)
+      .concat(weatherApi.middleware),
 });
 
-// Создаём persistor для redux-persist
+// Persistor
 export const persistor = persistStore(store);
 //▶ Вызываем persistStore(store):
 
@@ -102,11 +92,14 @@ export const persistor = persistStore(store);
 //   <App />
 // </PersistGate>
 
+
 // Это говорит React: "Не рендери App, пока persisted state не восстановится".
 
-// Типы для TypeScript
+
+// Типы
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
 
 // Persist store = служебный объект, управляющий процессом persist/rehydrate.
 
@@ -129,6 +122,7 @@ export type AppDispatch = typeof store.dispatch;
 // Когда ты вызываешь:
 
 // export const persistor = persistStore(store);
+
 
 // Redux-persist создаёт объект persistor, который делает две вещи:
 
@@ -155,6 +149,7 @@ export type AppDispatch = typeof store.dispatch;
 
 // С persist:
 // Redux store ← persistReducer ← persistor ← localStorage
+
 
 // 🔍 Здесь:
 
